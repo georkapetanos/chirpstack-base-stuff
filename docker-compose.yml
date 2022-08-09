@@ -1,0 +1,35 @@
+version: "2"
+
+volumes:
+  chirpstack-gateway-bridge-config:
+  chirpstack-concentratord-data:
+  chirpstack-udp-forwarder-config:
+  chirpstack-zeromq:
+
+services:
+  chirpstack-gateway-bridge:
+    tty: true
+    image: chirpstack-base-stuff/chirpstack-gateway-bridge
+    build: ./chirpstack-gateway-bridge
+    expose:
+      - 1700/udp
+    volumes:
+      - chirpstack-gateway-bridge-config:/etc/chirpstack-gateway-bridge
+  chirpstack-udp-forwarder:
+    tty: true
+    image: chirpstack-base-stuff/chirpstack-udp-forwarder
+    build: ./chirpstack-udp-forwarder
+    volumes:
+      - chirpstack-zeromq:/tmp/zeromq
+      - chirpstack-udp-forwarder-config:/etc/chirpstack-udp-forwarder
+    depends_on:
+      - chirpstack-concentratord
+      - chirpstack-gateway-bridge
+  chirpstack-concentratord:
+    privileged: true
+    tty: true
+    image: chirpstack-base-stuff/chirpstack-concentratord
+    build: ./chirpstack-concentratord
+    volumes:
+      - chirpstack-concentratord-data:/etc/chirpstack-concentratord
+      - chirpstack-zeromq:/tmp/zeromq

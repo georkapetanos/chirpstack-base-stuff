@@ -1,0 +1,3 @@
+#!/bin/bash
+
+chirpstack-concentratord-sx1302 -c /etc/chirpstack-concentratord/sx1302/channels.toml -c /etc/chirpstack-concentratord/sx1302/global.toml -c /etc/chirpstack-concentratord/sx1302/beacon.toml
