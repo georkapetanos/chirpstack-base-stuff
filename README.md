@@ -1,4 +1,4 @@
-## Docker-compose for chirpStack open-source LoRaWAN network and application server
+## Multicontainer docker setup for chirpstack LoraWAN gateway
 
 ### Services
 
