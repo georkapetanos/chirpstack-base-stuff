@@ -11,4 +11,4 @@ COPY ./configuration/chirpstack-udp-forwarder.toml /etc/chirpstack-udp-forwarder
 
 RUN mkdir -p /tmp/zeromq
 
-ENTRYPOINT ["/usr/bin/chirpstack-udp-forwarder","-c/etc/chirpstack-udp-forwarder/chirpstack-udp-forwarder.toml"]
+ENTRYPOINT ["/usr/bin/chirpstack-udp-forwarder","-c", "/etc/chirpstack-udp-forwarder/chirpstack-udp-forwarder.toml"]

@@ -14,4 +14,4 @@ COPY ./configuration/chirpstack-gateway-bridge.toml /etc/chirpstack-gateway-brid
 
 RUN mkdir -p /tmp/zeromq
 
-ENTRYPOINT ["/usr/bin/chirpstack-gateway-bridge","-c/etc/chirpstack-gateway-bridge/chirpstack-gateway-bridge.toml"]
+ENTRYPOINT ["/usr/bin/chirpstack-gateway-bridge","-c","/etc/chirpstack-gateway-bridge/chirpstack-gateway-bridge.toml"]
